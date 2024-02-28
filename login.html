@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-Hants">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>日本之漫遊者 | 會員專區</title>
+
+  <link rel="stylesheet" href="./css/logincss.css" />
+
+  <!-- FirebaseApp必須要先在第一個 -->
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <!-- 增加您需要的服務 https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-storage-compat.js"></script>
+  <!-- JQ -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <img class="fixed-image" src="https://i.imgur.com/bXdjNl6.jpg" alt="fixed-image" />
+
+  <header>
+    <section class="logo">
+      <img src="https://i.imgur.com/MVy41mN.gifv" alt="日本旅遊網Logo" />
+      <h1>日本之漫遊者</h1>
+    </section>
+    <nav>
+      <ul>
+        <li>
+          <a href="index.html"><i class="fa-solid fa-plane"></i> 日本旅遊</a>
+        </li>
+        <li>
+          <a href="login.html" class="active"><i class="fa-solid fa-right-to-bracket"></i> 會員專區</a>
+        </li>
+        <li>
+          <a href="reserve.html"><i class="fa-solid fa-book"></i> 預約行程</a>
+        </li>
+        <li>
+          <a href="about.html"><i class="fa-regular fa-address-book"></i> 關於我們</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-10 col-md-8 col-lg-6 mx-auto">
+        <div class="card shadow mt-5">
+          <div class="card-header text-center display-4">會員登入</div>
+
+          <div class="card-body">
+            <div class="card-input">
+              <div class="form-group">
+                <label for="email" class="form-control-label">Email :</label>
+
+                <input type="text" class="form-control" id="email" placeholder="Example@mail.com" />
+              </div>
+
+              <div class="form-group">
+                <label for="password" class="form-control-label">密 碼 :</label>
+
+                <input type="password" class="form-control" id="password"
+                  placeholder="Must have at least 7 characters" />
+              </div>
+            </div>
+
+            <div class="row mt-5 px-2">
+              <button type="button" class="btn col-md-4 btn-light shadow" id="btnSignIn">
+                登入
+              </button>
+
+              <button type="button" class="btn col-md-4 btn-light shadow" id="btnSignUp">
+                註冊
+              </button>
+
+              <button type="button" class="btn col-md-4 btn-info shadow" id="btnSignOut">
+                登出
+              </button>
+            </div>
+
+            <!-- Sign Information -->
+
+            <div class="card-text text-info mt-3" id="signInfo">
+              No one login...
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <section class="logo">
+      <img src="https://i.imgur.com/MVy41mN.gifv" alt="logo" />
+      <h3>♥ 日 本 之 漫 遊 者 ♥</h3>
+    </section>
+    <section class="links">
+      <a href="#"><img src="https://i.imgur.com/tuTHiE8.png" alt="facebook" /></a>
+      <a href="#"><img src="https://i.imgur.com/tuTHiE8.png" alt="instagram" /></a>
+      <a href="#"><img src="https://i.imgur.com/tuTHiE8.png" alt="twitter" /></a>
+      <a href="#"><img src="https://i.imgur.com/tuTHiE8.png" alt="youtube" /></a>
+    </section>
+  </footer>
+
+  <script type="module" src="./js/firebase.js"></script>
+  <script type="module" src="./js/firebaseScript.js"></script>
+  <script type="module" src="./js/firebaseAuth.js"></script>
+  <!-- <script type="module">
+    const auth = firebase.auth();
+
+    auth.createUserWithEmailAndPassword(email, password);
+    auth.signInWithEmailAndPassword(email, password);
+    auth.signOut();
+    auth.onAuthStateChanged(function (user) {
+      if (user) {
+        console.log("has logged in");
+      } else {
+        console.log("not logged in");
+      }
+    });
+
+    const $email = $("#email");
+    const $password = $("#password");
+    const $btnSignIn = $("#btnSignIn");
+    const $btnSignUp = $("#btnSignUp");
+    const $btnSignOut = $("#btnSignOut");
+    const $signInfo = $("#sign-info");
+
+    $btnSignIn.click(function (e) {
+      auth
+        .signInWithEmailAndPassword($email.val(), $password.val())
+        .catch(function (e) {
+          $signInfo.html(e.message);
+        });
+    });
+
+    $btnSignUp.click(function (e) {
+      auth
+        .createUserWithEmailAndPassword($email.val(), $password.val())
+        .catch(function (e) {
+          $signInfo.html(e.message);
+        });
+    });
+
+    auth.onAuthStateChanged(function (user) {
+      if (user) {
+        $signInfo.html("${user.email} is log in");
+        console.log(user);
+      } else {
+        console.log("not logged in");
+      }
+    });
+
+    $btnSignOut.click(function () {
+      auth.signOut();
+      $email.val("");
+      $password.val("");
+      $signInfo.html("No one login...");
+    });
+  </script> -->
+</body>
+
+</html>
